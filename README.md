@@ -22,10 +22,12 @@ python3 manage.py runserver
 #### For Windows
 ```
 ./venv/Scripts/activate
+python manage.py runserver
 ```
 #### For Linux
 ```
 source venv/bin/activate
+python3 manage.py runserver
 ```
 
 ### Using Docker
