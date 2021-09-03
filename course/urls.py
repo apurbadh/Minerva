@@ -8,5 +8,6 @@ urlpatterns = [
     path("course/<slug:name>/quiz/", include("quiz.urls"), name="quiz"),
     path("login", views.loginPage, name="login"),
     path("register", views.registerPage, name="register"),
+    path("verify", views.verifyPage, name="verify"),
     path("logout", views.logoutUser, name="logout")
 ]

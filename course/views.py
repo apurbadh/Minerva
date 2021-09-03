@@ -4,8 +4,8 @@ from django.contrib.auth.decorators import login_required
 from . import forms
 from django.contrib.auth.models import User, Group
 from django.contrib import messages
-from .decorators import not_loggedin
-
+from .decorators import not_loggedin, is_not_teacher
+from .getmail import getData
 # Create your views here.
 @login_required(login_url="/login")
 def index(req):
@@ -53,3 +53,13 @@ def registerPage(req):
 def logoutUser(req):
     logout(req)
     return redirect('/login')
+
+@login_required
+def verifyPage(req):
+    if req.method == "POST":
+        code = req.POST["code"]
+        actual_code = req.session.get("code")
+        
+    code = getData(req.user.email)
+    req.session["code"] = code
+    return render(req, "apply.html")
