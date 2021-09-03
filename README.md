@@ -11,13 +11,13 @@
 * [Contact](#contact)
 
 ## Information
-Minerva is a open source platform for people to learn valuable skills. It is a platform for anyone with a will to learn, We the creators of Minerva beleive that education is a basic right and everyone needs to have access to it.
+Minerva is an open source platform for people to learn valuable skills. It is a platform dedicated to anyone with a will to learn. We, the creators of Minerva, beleive that education is a basic right and everyone needs to have access to it. Hence why, we have developed this platform for those who want to enhance their learning experience.
 
 ## Screenshots
 ![Banner](./img/min.png)
 
 ## Technologies
-For Backend Minerva runs on Python's Django framework, It is built with HTML,CSS and JS with jinja templating engine for frontend, It is fast Precise and functional with beautiful UI.
+For backend, Minerva runs on Python's Django framework. It is built with HTML, CSS and JS with jinja templating engine for frontend. It is fast precise and functional with beautiful UI.
 
 ## Setup
 
@@ -67,4 +67,4 @@ cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 ## Contact 
-You can contact us at [contact@apurbaadhikari.com.np](contact@apurbaadhikari.com.np).
+You can contact us at [contact@apurbaadhikari.com.np](contact@apurbaadhikari.com.np)
