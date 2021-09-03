@@ -1,3 +1,4 @@
+from os import name
 from django.urls import path, include
 from . import views
 
@@ -9,5 +10,7 @@ urlpatterns = [
     path("login", views.loginPage, name="login"),
     path("register", views.registerPage, name="register"),
     path("verify", views.verifyPage, name="verify"),
-    path("logout", views.logoutUser, name="logout")
+    path("apply", views.verifyThePage, name="apply"),
+    path("logout", views.logoutUser, name="logout"),
+    path("change", views.changeProfile, name="change")
 ]

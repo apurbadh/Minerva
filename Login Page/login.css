@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
 body {
     background: #f2f4ff;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -7,10 +8,11 @@ body {
     margin-top: 100px;
     margin-left: 500px;
     margin-right: 500px;
-    height: 400px;
-    background: #2832C2;
+    height: 500px;
+    background: #217DE9;
     text-align: center;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 5rem;
 }
 
 .logo {
@@ -35,7 +37,7 @@ body {
 input[type=text] {
     background-color: #1A2226;
     border: none;
-    border-bottom: 2px solid #2832C2;
+    border-bottom: 2px solid #217DE9;
     border-top: 0px;
     border-radius: 0px;
     font-weight: bold;
@@ -49,7 +51,7 @@ input[type=text] {
 input[type=password] {
     background-color: #1A2226;
     border: none;
-    border-bottom: 2px solid #2832C2;
+    border-bottom: 2px solid #217DE9;
     border-top: 0px;
     border-radius: 0px;
     font-weight: bold;
@@ -92,8 +94,8 @@ label {
 }
 
 .btn-outline-primary {
-    border-color: #2832C2;
-    color: #2832C2;
+    border-color: #217DE9;
+    color: #217DE9;
     background-color: #ffff;
     border-radius: 0px;
     font-weight: bold;
@@ -101,7 +103,7 @@ label {
 }
 
 .btn-outline-primary:hover {
-    background-color: #2832C2;
+    background-color: #217DE9;
     color: #ffff;
     right: 0px;
 }

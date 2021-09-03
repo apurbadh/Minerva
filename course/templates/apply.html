@@ -1,8 +1,14 @@
 {% extends "base.html" %}
 {% block title %} Apply {% endblock %}
 {% block body %}
-
+    {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+          {{ message|striptags }}
+        </div>
+        <br/>
+    {% endfor %}
     <form action="" method="POST" style="text-align: center;">
+        {% csrf_token %}
         <br><br>
         <h1>Verify as Teacher</h1>
         <br><br>

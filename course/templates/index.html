@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% block title %}Dashboard{% endblock %}
 {%block body%}
+          {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+          {{ message|striptags }}
+        </div>
+        <br/>
+    {% endfor %}
     <p>Hello, {{ user.username }}</p>
     <p>Email : {{ user.email }}</p>
     {% if is_teacher %}

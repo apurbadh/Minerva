@@ -4,8 +4,8 @@ from django.contrib.auth.decorators import login_required
 from . import forms
 from django.contrib.auth.models import User, Group
 from django.contrib import messages
-from .decorators import not_loggedin, is_not_teacher
-from .getmail import getData
+from .decorators import not_loggedin, is_not_teacher, is_teacher
+from .verify import getData, check_github
 # Create your views here.
 @login_required(login_url="/login")
 def index(req):
@@ -55,11 +55,43 @@ def logoutUser(req):
     return redirect('/login')
 
 @login_required
+@is_not_teacher
 def verifyPage(req):
     if req.method == "POST":
-        code = req.POST["code"]
+        code = getData(req.user.email)
+        req.session["code"] = str(code)
+        return redirect("/apply")
+    return render(req, "verify.html")
+
+@login_required
+@is_not_teacher
+def verifyThePage(req):
+    if req.method == "POST":
         actual_code = req.session.get("code")
-        
-    code = getData(req.user.email)
-    req.session["code"] = code
+        code = req.POST["code"]
+        username = req.POST["username"]
+        if str(code) == actual_code and check_github(username):
+            group = Group.objects.get(name="teachers")
+            req.user.groups.add(group)
+            return redirect('/')
+        messages.error("Invalid Information")
+        return redirect("/apply")
     return render(req, "apply.html")
+
+
+@login_required
+def changeProfile(req):
+    if req.POST == "POST":
+        form = forms.UserForm(req.POST, instance=req.user)
+        if form.is_valid():
+            form.save()
+            messages.success("Edited sucessfully !")
+        else:
+            errors = list(form.errors.values())          
+            messages.error(req, errors[0])
+        return redirect('/change')
+    form = forms.UserForm(instance=req.user)
+    context = {
+        "form" : form
+    }
+    return render(req, "changepassword.html", context)
