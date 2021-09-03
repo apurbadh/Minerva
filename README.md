@@ -1,5 +1,7 @@
 # Minerva
 A platform for sharing selfmade courses, quizes to other in the platform
+<<<<<<< HEAD
+=======
 
 ## How to Run ?
 
@@ -22,13 +24,16 @@ python3 manage.py runserver
 #### For Windows
 ```
 ./venv/Scripts/activate
+python manage.py runserver
 ```
 #### For Linux
 ```
 source venv/bin/activate
+python3 manage.py runserver
 ```
 
 ### Using Docker
  ```
  docker-compose up -d
  ```
+>>>>>>> 8578c3c88c20129d1c1fc34e31c1b202c51b9896
