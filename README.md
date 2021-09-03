@@ -1,7 +1,7 @@
 # Minerva
 > A platform for sharing selfmade courses, quizes to other in the platform
 
-##Table of Contents
+## Table of Contents
 * [Information](#general-info)
 * [Screenshots](#screenshots)
 * [Technologies](#technologies)
@@ -58,7 +58,7 @@ python3 manage.py runserver
 Project is : _In Development_
 
 
-##Inspiration
+## Inspiration
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
