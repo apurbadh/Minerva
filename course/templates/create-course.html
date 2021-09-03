@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %} Create Course {% endblock %}
+{% block body %}
+    <br>
+    <br>
+    
+
+<form action="" method="POST" style="text-align: center;margin-top:5rem">
+    <h1>Create Course</h1><br>
+        Name : {{ form.name }}<br><br>
+        {{ form.description }}<br><br>
+        Picture : {{ form.picture }}<br><br>
+        <input type="submit" value="Create Course" class="btn btn-primary">
+    </form>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+{% endblock %}

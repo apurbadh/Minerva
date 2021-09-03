@@ -11,5 +11,6 @@ urlpatterns = [
     path("verify", views.verifyPage, name="verify"),
     path("apply", views.verifyThePage, name="apply"),
     path("logout", views.logoutUser, name="logout"),
-    path("change", views.changeProfile, name="change")
+    path("change", views.changeProfile, name="change"),
+    path("create-course", views.createCourse, name="createCourse"),
 ]

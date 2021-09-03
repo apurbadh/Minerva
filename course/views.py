@@ -6,11 +6,11 @@ from django.contrib.auth.models import User, Group
 from django.contrib import messages
 from .decorators import not_loggedin, is_not_teacher, is_teacher
 from .verify import getData, check_github
+
 # Create your views here.
 @login_required(login_url="/login")
 def index(req):
-    is_teacher = req.user.groups.filter(name="teachers");
-    return render(req, "index.html", {"is_teacher":is_teacher})
+    return render(req, "index.html")
 
 
 @login_required(login_url="/login")
@@ -95,3 +95,11 @@ def changeProfile(req):
         "form" : form
     }
     return render(req, "changepassword.html", context)
+
+@is_teacher
+def createCourse(req):
+    form = forms.CourseForm()
+    context = {
+        "form":form
+    }
+    return render(req, "create-course.html", context)

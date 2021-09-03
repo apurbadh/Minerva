@@ -1,3 +1,4 @@
+{% load course_extras %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,13 +8,14 @@
     <link href="/static/css/footer.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<link href="/static/css/card.css" rel="stylesheet">
 
     <title>Minerva | {% block title %} {% endblock %}</title>
 </head>
 <body>
-   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+   <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width: 100%">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">Minerva</a>
+    <a class="navbar-brand" href="/"><img src="/static/images/main.png" width="50px" height="50px"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -24,26 +26,32 @@
             {{ user.username }}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            {% if request.user|has_group:"teachers" %} 
+            <li><a class="dropdown-item" href="/create-course" >Create Course</a></li>
+            {% else %}
             <li><a class="dropdown-item" href="/verify" >Apply for Teacher</a></li>
+            {% endif %}
             <li><a class="dropdown-item" href="/change">Edit Profile</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="/logout">Logout</a></li>
           </ul>
           
         </div>
+        
       </ul>
+<form style="margin-left: 30rem;margin-right:45%">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="height:50%">
 
-      <form class="d-flex" style="margin-left: 30rem;">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+  </form>
+      
               
         
     </div>
   </div>
 </nav>
 {% block body %}{%endblock%}
-    <div class="footer-dark">
+
+    <div class="footer-dark" style="width: 100%; margin-top: 15rem">
         <footer>
             <div class="container">
                 <div class="row">
