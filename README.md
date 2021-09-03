@@ -1,7 +1,5 @@
 # Minerva
 A platform for sharing selfmade courses, quizes to other in the platform
-<<<<<<< HEAD
-=======
 
 ## How to Run ?
 
@@ -36,4 +34,3 @@ python3 manage.py runserver
  ```
  docker-compose up -d
  ```
->>>>>>> 8578c3c88c20129d1c1fc34e31c1b202c51b9896
