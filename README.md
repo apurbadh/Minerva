@@ -17,7 +17,7 @@ Minerva is an open source platform for people to learn valuable skills. It is a 
 ![Banner](./img/min.png)
 
 ## Technologies
-For Backend, Minerva runs on Python's Django framework. It is built with HTML, CSS and JS with jinja templating engine for frontend. It is fast precise and functional with beautiful UI.
+For backend, Minerva runs on Python's Django framework. It is built with HTML, CSS and JS with jinja templating engine for frontend. It is fast precise and functional with beautiful UI.
 
 ## Setup
 
