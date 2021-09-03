@@ -2,13 +2,15 @@ from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from . import forms
+from django.contrib.auth.models import User, Group
 from django.contrib import messages
 from .decorators import not_loggedin
 
 # Create your views here.
 @login_required(login_url="/login")
 def index(req):
-    pass
+    is_teacher = req.user.groups.filter(name="teachers");
+    return render(req, "index.html", {"is_teacher":is_teacher})
 
 
 @login_required(login_url="/login")
@@ -36,7 +38,7 @@ def registerPage(req):
         if form.is_valid():
             form.save()
             user = authenticate(username=form.cleaned_data["username"], password=form.cleaned_data["password1"])
-            login(user)
+            login(req, user)
             return redirect('/')
         else:
             errors = list(form.errors.values())          
@@ -49,5 +51,5 @@ def registerPage(req):
 
 @login_required(login_url="/login")
 def logoutUser(req):
-    logout(req.user)
+    logout(req)
     return redirect('/login')

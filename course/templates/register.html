@@ -4,25 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/css/footer.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <title>Register</title>
 </head>
 <body>
-    {% for message in messages %}
+
+    <form action="" method="POST" style="text-align: center;">
+        <br>
+        <h1>Register</h1>
+        <br>
+            {% for message in messages %}
         <div class="alert alert-danger" role="alert">
           {{ message|striptags }}
         </div>
         <br/>
     {% endfor %}
-    <form action="" method="POST">
         {% csrf_token %}
-        Username : {{ form.username }}<br/>
-        Email address : {{ form.email  }}<br/>
-        Password : {{ form.password1 }}<br/>
-        Confirm Password : {{ form.password2 }}<br/>
+        Username : {{ form.username }}<br/><br>
+        Email address : {{ form.email  }}<br/><br>
+        Password : {{ form.password1 }}<br/><br>
+        Confirm Password : {{ form.password2 }}<br/><br>
         <br/>
-        <input type="submit" value="Register"/>
-        {{ forms.errors }}
+        <input type="submit" value="Register" class="btn btn-primary"/><br><br>
+            <a href="/login">Login</a>
+
     </form>
-    <a href="/login">Login</a>
 </body>
 </html>
