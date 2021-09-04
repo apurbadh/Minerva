@@ -13,7 +13,7 @@
                         <div class="media-left">
                         </div>
                         <div class="media-content">
-                        	<p>{{ question.user }}</p>
+                        	<p>{{ question.user.username }}</p>
                             <div class="content list-forum">
                                 <p class="text-content">
                                     <a href="#" style="text-decoration: none;">{{ question.question }}
@@ -31,6 +31,7 @@
                     </article>
         </div>
         <form method="POST" action="" id="formq">
+                                {% csrf_token %}
 
                 <div class="field is-grouped">
                     <p class="control is-expanded">
@@ -52,14 +53,9 @@
             {% for answer in answers %}
                 <div class="form box">
                     <article class="media">
-                        <div class="media-left">
-                            <figure class="image avatar is-64x64">
 
-                                <img src="/static/img/user.png" alt="Image" class="is-rounded">
-                            </figure>
-                        </div>
                         <div class="media-content">
-                        	<p>{{ answer.user }}</p>
+                        	<p>{{ answer.user.username }}</p>
                             <div class="content list-forum">
                                 <p class="text-content">
                                     {{ answer.answer }}
@@ -68,9 +64,10 @@
                         </div>
                     </article>
                 </div>
-                </div>
-                </div>
+
             {% endfor %}
+                            </div>
+                </div>
             </div>
         </div>
   </div></div>
@@ -79,10 +76,6 @@
         <br>
         <br>
         <br>
-        
-        {% if not course %}
-            <h1 style="text-align: center;">No answers</h1>
-        {% endif %}
             
         <br>
         <br>

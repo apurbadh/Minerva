@@ -25,6 +25,14 @@ def answers(req, id):
     except:
         question = None
         answers = None
+    if req.method == "POST":
+        answer = req.POST["answer"]
+        obj = Answer.objects.create(user=req.user, answer=answer)
+        obj.save()
+        question.answer.add(obj)
+        question.save()
+        return redirect("/forum/question/" + str(id))
+
     context = {
         "question": question,
         "answers":answers
