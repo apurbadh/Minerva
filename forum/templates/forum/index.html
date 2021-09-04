@@ -1,0 +1,86 @@
+{% extends 'forum/base.html' %}
+{% block head %} Forum {% endblock head %}
+{% block body %}
+<br>
+<br>
+<div class="container">
+    {% if questions %}
+
+        <form method="POST" action="" id="formq" style="align-items: center;">
+            {% csrf_token %}
+                <div class="field is-grouped">
+                    <p class="control is-expanded">
+                        <input class="input is-medium" type="text" id="quest" placeholder="Enter question" name="question">
+                    </p>
+                    <p class="control">
+                        <button class="button is-medium is-info" onclick="submitf()">
+                      Post
+                    </button>
+
+                    </p>
+                </div>
+           </form>
+           <br>
+<div class="columns">
+            <div class="column is-three-quarters">
+
+
+    {% for question in questions %}
+                <div class="box forum" style="margin: 5rem; margin-bottom:2rem; margin-top:2rem">
+                    <article class="media">
+                        <div class="media-left">
+                        </div>
+                        <div class="media-content">
+                        	<p>{{ question.user }}</p>
+                            <div class="content list-forum">
+                                <p class="text-content">
+                                    <a href="/forum/question/{{ question.id }}" style="text-decoration: none;">{{ question.question }}
+                                </span>
+                              </a>
+                                </p>
+                                <p class="info-content">
+                                    <a>
+                                        <i class="mdi mdi-comment-text-multiple-outline"></i>
+                                        <small>{{ question.answer.all.count }}</small>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+                        </div>
+
+    {% endfor %}
+    </div>
+    </div>
+    {% else %}
+    <h1 style="text-align: center;">Not Found</h1>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    {% endif %}
+                </div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% endblock body %}
+    
