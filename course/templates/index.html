@@ -14,7 +14,7 @@
 
   {% for course in courses %}
 <div class="card" class="d-flex flex-row" class="align-center" style="width: 18rem;margin:40px">
-  <img src="/media/{{ course.picture }}" class="card-img-top">
+  <div class="crop" ><img src="/media/{{ course.picture }}" class="image-size" class="card-img-top"></div>
   <div class="card-body">
     <h5 class="card-title">{{ course.name }}</h5>
     <p class="card-text">{{ course.description }}</p>
@@ -34,5 +34,16 @@
     <br>
     <br>
     <br>
+    <style>
+      .image-size{
+        width: 265px;
+      }
+      .crop{
+        height: 175px;
+        width: 265px;
+        overflow: hidden;
+        padding: 2px;
+      }
+    </style>
 
 {% endblock %}
