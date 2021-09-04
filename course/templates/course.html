@@ -11,9 +11,11 @@
   <img src="/media/{{ course.picture }}" width="100px" height="100px" style="margin-top: 5rem; margin-left:5rem; border-radius:100px">
     <h1 style="margin-top: 2rem; margin-left:5rem">{{ course.name }}</h1>
     <p style="margin-left:7rem;">By {{ course.teacher.username }}</p>
-    <a href="/forum/{{ course.id }}"><button>Forum</button></a>
+    <div class="forum" style="margin-left: 7.5%">
+      <a href="/forum/{{ course.id }}"><button class="btn btn-primary">Forum</button></a>
+    </div>
         <div style="text-align: center;">
-
+          
        <h1  style="margin-top: 5rem;">Modules</h1>
 
 
