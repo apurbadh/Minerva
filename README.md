@@ -59,12 +59,7 @@ Project is : _In Development_
 
 
 ## Inspiration
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Education is a necessity and an intergral core of our life, which needs to be attainable by everyone, anywhere.  We ourselves, during our childhood, had no access to facilities such as this. We lacked the oppportunity to get services like this and make our learning experience easier and better. As such, we were inspired to create a platform where anyone can access the courses they require. What we couldn't get for ourselves, we wish to provide to others.
 
 ## Contact 
 You can contact us at [contact@apurbaadhikari.com.np](contact@apurbaadhikari.com.np)
