@@ -9,6 +9,7 @@
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="/static/css/login.css" />
     <title>Minerva | Login</title>
+    <link rel="shortcut icon" href="/static/images/main.png">
   </head>
   <body>
     <div class="container">
@@ -20,20 +21,20 @@
         </div>
         <br/>
     {% endfor %}
-              <h1>Log in</h1>
+              <h1>LOGIN</h1>
               <form action="" method="POST">
                 {% csrf_token %}
                 <input type="text" placeholder="Username" name="username" required>
               <input type="password" placeholder="Password" name="password" required><br>
-              <button type="submit">Log in</button>
+              <button type="submit" style="background-color: #2832C2;">Log in</button>
               </form>
               <div class="clearfix"></div>
          </div>
       </div>
       <div class="register">
           <div class="container">
-            <img src="/static/images/main.png">
-              <h2>Hello,there!</h2>
+            <img src="/static/images/main.png" height="300px" width="300px">
+              <h2>Hello there!</h2>
               <p>The beautiful thing about learning is nobody can take it away from you</p>
               <a href="/register"><button>Register <i class="fas fa-arrow-circle-right"></i></button></a>
           </div>
