@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from . import forms, models
 from django.contrib.auth.models import User, Group
 from django.contrib import messages
-from .decorators import not_loggedin, is_not_teacher, is_teacher
+from .decorators import not_loggedin, is_not_teacher, is_teacher, should_enroll
 from .verify import getData, check_github
 from django.db.models import Q
 
@@ -25,7 +25,7 @@ def index(req):
     }
     return render(req, "index.html", context)
 
-
+@should_enroll
 @login_required(login_url="/login")
 def course(req, id):
     try:
@@ -142,9 +142,18 @@ def search(req):
     results = models.Course.objects.all().filter(Q(name__contains=f"{q}") | Q(description__contains=q))
     return render(req,'search.html',{'results':results})
 
+@login_required
 def new(req):
     courses=models.Course.objects.all()
     context = {
         "courses":courses
     }
     return render(req, "new.html", context)
+
+@login_required
+def enroll(req):
+    if req.method == "POST":
+        id = int(req.POST["course"])
+        course = models.Course.objects.get(id=id)
+        course.users.add(req.user)
+    return redirect('/')

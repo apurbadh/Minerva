@@ -1,14 +1,15 @@
 import course
 from django.shortcuts import redirect, render
-from course.models import Course, User
-from .decorators import is_enrolled
+from course.models import Course
+from course.decorators import should_enroll
 from .models import Question, Answer
 
 # Create your views here.
+@should_enroll
 def forum(req, id):
+    course = Course.objects.get(id=id)
     if req.method == "POST":
         question = req.POST["question"]
-        course = Course.objects.get(id=id)
         question = Question.objects.create(question=question, quser=req.user, course=course)
         question.save()
         return redirect('/forum/' + str(id))
@@ -18,6 +19,7 @@ def forum(req, id):
     }
     return render(req, "forum/index.html", context)
 
+@should_enroll
 def answers(req, id):
     try:
         question = Question.objects.get(id=id)

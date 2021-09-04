@@ -18,7 +18,11 @@
   <div class="card-body">
     <h5 class="card-title">{{ course.name }}</h5>
     <p class="card-text">{{ course.description }}</p>
-    <a href="/course/{{ course.id }}" class="btn btn-primary">Continue</a>
+    <form action="/enroll" method="POST">
+      <input type="hidden" value="{{ course.id }}" name="course">
+      {% csrf_token %}
+    <button href="/course/{{ course.id }}" class="btn btn-primary" type="submit">Join</button>
+    </form>
   </div>
 </div>
 {% endfor %}

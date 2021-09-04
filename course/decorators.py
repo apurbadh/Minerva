@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.shortcuts import redirect
+from .models import Course
 
 def not_loggedin(func):
     
@@ -29,3 +30,14 @@ def is_teacher(func):
         return func(req, *args, **kwargs)
     
     return wrapper
+
+
+def should_enroll(func):
+    
+    def wrapper(req, *args, **kwargs):
+        course = Course.objects.get(id=id)
+        if req.user not in course.users.all():
+            return redirect("/")
+        return func(req, *args, **kwargs)
+    return wrapper
+    

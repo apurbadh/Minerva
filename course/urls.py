@@ -13,5 +13,6 @@ urlpatterns = [
     path("change", views.changeProfile, name="change"),
     path("create-course", views.createCourse, name="createCourse"),
     path('search', views.search, name="search"),
-    path('new', views.new, name="new")
+    path('new', views.new, name="new"),
+    path("enroll", views.enroll, name="enroll")
 ]
