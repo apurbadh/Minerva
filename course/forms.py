@@ -13,4 +13,4 @@ class CourseForm(ModelForm):
     
     class Meta:
         model = Course
-        fields = "__all__"
+        fields = ["name", "description", "picture"]

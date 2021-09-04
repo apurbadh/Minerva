@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from . import forms
+from . import forms, models
 from django.contrib.auth.models import User, Group
 from django.contrib import messages
 from .decorators import not_loggedin, is_not_teacher, is_teacher
@@ -98,6 +98,13 @@ def changeProfile(req):
 
 @is_teacher
 def createCourse(req):
+    if req.method == "POST":
+        form = forms.CourseForm(req.POST, req.FILES)
+        res = form.save(commit=False)
+        res.teacher = req.user
+        res.save()
+        return redirect('/')
+        
     form = forms.CourseForm()
     context = {
         "form":form

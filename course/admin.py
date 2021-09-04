@@ -6,12 +6,12 @@ from django.contrib.auth.models import User, Group
 
 
 # Register your models here.
-class MinervaAdmin(AdminSite):
-    site_title = ugettext_lazy("Minerva Admin")
+class OrionAdmin(AdminSite):
+    site_title = ugettext_lazy("Orion Admin")
     site_header = ugettext_lazy("Admin Panel")
     index_title = ugettext_lazy("Index")
     
-admin.site = MinervaAdmin()
+admin.site = OrionAdmin()
 
 admin.site.register(Course)
 admin.site.register(Module)
