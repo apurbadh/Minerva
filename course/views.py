@@ -6,6 +6,8 @@ from django.contrib.auth.models import User, Group
 from django.contrib import messages
 from .decorators import not_loggedin, is_not_teacher, is_teacher
 from .verify import getData, check_github
+from django.db.models import Q
+
 
 # Create your views here.
 @login_required(login_url="/login")
@@ -60,7 +62,7 @@ def registerPage(req):
             login(req, user)
             return redirect('/')
         else:
-            errors = list(form.errors.values())          
+            errors = list(form.errors.values())
             messages.error(req, errors[0])
             return redirect("/register")
     form = forms.UserForm()
@@ -113,7 +115,7 @@ def changeProfile(req):
         login(req, user)
         messages.success(req, "Edited sucessfully !")
         return redirect('/change')
-   
+
     return render(req, "changepassword.html")
 
 @is_teacher
@@ -124,9 +126,18 @@ def createCourse(req):
         res.teacher = req.user
         res.save()
         return redirect('/')
-        
+
     form = forms.CourseForm()
     context = {
         "form":form
     }
     return render(req, "create-course.html", context)
+
+@login_required
+def search(req):
+    try:
+        q = req.GET.get('q')
+    except :
+        return redirect('/')
+    results = models.Course.objects.all().filter(Q(name__contains=f"{q}") | Q(description__contains=q))
+    return render(req,'search.html',{'results':results})

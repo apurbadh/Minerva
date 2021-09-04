@@ -20,14 +20,20 @@
             <br><br>
        {% endif %}
   {% for module in modules %}
-<div class="card" style="width: 18rem;display: flex;flex-direction: column; flex-wrap:wrap">
-  <div class="card-body">
-    <h5 class="card-title">{{ module.name }}</h5>
-    <p class="card-text"><br></p>
-    <a href="/course/" class="btn btn-primary">Start</a>
+  <div class="card text-center">
+    <div class="card-header">
+      Module
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{module.name}}</h5>
+      <p class="card-text">{{ module.info }}</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
   </div>
-</div>
+
+
 {% endfor %}
+
 </div>
   {% else %}
 
