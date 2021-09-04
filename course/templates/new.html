@@ -1,11 +1,18 @@
-{% extends 'base.html' %}
-{% block title %} Search {% endblock %}
-{% block body %}
-    <h3  style="margin-top: 5rem; text-align:center;"> Search Results for "{{ request.GET.q }}"</h3>
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{%block body%}
+<br>
+          {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+          {{ message|striptags }}
+        </div>
+        <br/>
+    {% endfor %}
+    <h1  style="margin-top: 5rem; text-align:center; font-weight: bold;">AVAILABLE COURSES</h1>
     <div style="text-align: center;" class="row">
 
 
-  {% for course in results %}
+  {% for course in courses %}
 <div class="card" class="d-flex flex-row" class="align-center" style="width: 18rem;margin:40px">
   <img src="/media/{{ course.picture }}" class="card-img-top">
   <div class="card-body">
@@ -27,4 +34,5 @@
     <br>
     <br>
     <br>
+
 {% endblock %}

@@ -141,3 +141,10 @@ def search(req):
         return redirect('/')
     results = models.Course.objects.all().filter(Q(name__contains=f"{q}") | Q(description__contains=q))
     return render(req,'search.html',{'results':results})
+
+def new(req):
+    courses=models.Course.objects.all()
+    context = {
+        "courses":courses
+    }
+    return render(req, "new.html", context)

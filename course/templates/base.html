@@ -25,6 +25,10 @@
           <a class="nav-link dropdown-toggle" href="#" style="color: #ffff" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             {{ user.username }}
           </a>
+          <a class="nav-link"  id="new-course" href="/new" style="color: #ffff" role="button" aria-expanded="false">
+             Courses
+          </a>
+          
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             {% if request.user|has_group:"teachers" %}
             <li><a class="dropdown-item" href="/create-course" >Create Course</a></li>
@@ -86,5 +90,8 @@
     height: 57px;
     padding: 5px;
 
+  }
+  #new-course{
+    padding-left: 3px;
   }
 </style>
