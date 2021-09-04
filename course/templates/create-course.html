@@ -7,10 +7,10 @@
 
 <form action="" method="POST" style="text-align: center;margin-top:5rem" enctype="multipart/form-data">
     {% csrf_token %}
-    <h1>Create Course</h1><br>
-        Name : {{ form.name }}<br><br>
+    <h1 style="font-weight: bold;">CREATE COURSE</h1><br>
+        <p style="text-align: center;">Name : {{ form.name }}</p><br><br>
         {{ form.description }}<br><br>
-        Picture : {{ form.picture }}<br><br>
+        <p style="text-align: center; margin-left: 7rem;">Picture : {{ form.picture }}</p><br><br>
         <input type="submit" value="Create Course" class="btn btn-primary">
     </form>
     <br>
