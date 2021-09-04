@@ -1,4 +1,3 @@
-from os import name
 from django.db import models
 from django.contrib.auth.models import User
 from course.models import Course
