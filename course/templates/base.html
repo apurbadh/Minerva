@@ -12,8 +12,8 @@
     <title>Minerva | {% block title %} {% endblock %}</title>
 </head>
 <body>
-   <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width: 100%">
-  <div class="container-fluid">
+   <nav class="navbar navbar-expand-lg navbar-light bg-light" style="width: 100%; background-clip: content-box; box-shadow: inset 0 0 0 10px #2832C2;">
+  <div class="container-fluid" style="background-color: #2832C2;">
     <a class="navbar-brand" href="/"><img src="/static/images/main.png" width="50px" height="50px"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -21,7 +21,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <div class="nav-item dropdown d-flex">
-          <a class="nav-link dropdown-toggle" href="#" style="color: black" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" style="color: #ffff" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             {{ user.username }}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -50,7 +50,7 @@
 </nav>
 {% block body %}{%endblock%}
 
-    <div class="footer-dark" style="width: 100%; margin-top: 15rem">
+    <div class="footer-dark" style="width: 100%; margin-top: 0rem; background-color: #2832C2;">
         <footer>
             <div class="container">
                 <div class="row">
