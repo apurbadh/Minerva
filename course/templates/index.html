@@ -10,7 +10,10 @@
     {% endfor %}
     <h1  style="margin-top: 5rem; text-align:center; font-weight: bold;">YOUR COURSES</h1>
     <div style="text-align: center;" class="row">
-
+      {% if not courses %}
+    <h3>No Courses Enrolled</h3>
+      
+      {% endif %}
 
   {% for course in courses %}
 <div class="card" class="d-flex flex-row" class="align-center" style="width: 18rem;margin:40px">

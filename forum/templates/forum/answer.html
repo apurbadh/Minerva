@@ -50,6 +50,9 @@
         <br>
         <div class="columns">
             <div class="column is-three-quarters">
+                {% if not answers %}
+                    <h4 style="text-align: center;">No answers</h4>
+                {% endif %}
             {% for answer in answers %}
                 <div class="form box">
                     <article class="media">
