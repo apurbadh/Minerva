@@ -81,20 +81,21 @@ def verifyThePage(req):
 
 @login_required
 def changeProfile(req):
-    if req.POST == "POST":
-        form = forms.UserForm(req.POST, instance=req.user)
-        if form.is_valid():
-            form.save()
-            messages.success("Edited sucessfully !")
-        else:
-            errors = list(form.errors.values())          
-            messages.error(req, errors[0])
+    if req.method == "POST":
+        print("Here")
+        username = req.POST["username"]
+        email = req.POST["email"]
+        password = req.POST["password"]
+        user = User.objects.get(id=req.user.id)
+        user.set_password(password)
+        user.username = username
+        user.email = email
+        user.save()
+        login(req, user)
+        messages.success(req, "Edited sucessfully !")
         return redirect('/change')
-    form = forms.UserForm(instance=req.user)
-    context = {
-        "form" : form
-    }
-    return render(req, "changepassword.html", context)
+   
+    return render(req, "changepassword.html")
 
 @is_teacher
 def createCourse(req):
