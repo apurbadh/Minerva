@@ -15,31 +15,44 @@
         <div style="text-align: center;">
 
        <h1  style="margin-top: 5rem;">Modules</h1>
+
+
+          
+
        {% if request.user == course.teacher %}
             <button class="btn btn-primary">Create a module</button>
             <br><br>
        {% endif %}
-  {% for module in modules %}
-  <div class="card text-center">
-    <div class="card-header">
-      Module
+
+    {% for module in modules %}
+    <div class="card text-center">
+      <div class="card-header">
+        Module
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{module.name}}</h5>
+        <p class="card-text">{{ module.info }}</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
     </div>
-    <div class="card-body">
-      <h5 class="card-title">{{module.name}}</h5>
-      <p class="card-text">{{ module.info }}</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
+
+
+      {% endfor %}
+
   </div>
+    {% else %}
 
-
-{% endfor %}
-
-</div>
-  {% else %}
-
-  <h1 style="text-align: center; margin-top:10%">Not Found</h1>
+    <h1 style="text-align: center; margin-top:10%">Not Found</h1>
   {% endif %}
-    <br>
+
+  {% if not course %}
+
+    <h4>No courses yet</h4>
+    <h4>Explore More!</h4>
+
+  {% endif %}
+
+  <br>
   <br>
   <br>
   <br>
