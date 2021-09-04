@@ -74,7 +74,7 @@ def verifyThePage(req):
             group = Group.objects.get(name="teachers")
             req.user.groups.add(group)
             return redirect('/')
-        messages.error("Invalid Information")
+        messages.error(req, "Invalid Information")
         return redirect("/apply")
     return render(req, "apply.html")
 
