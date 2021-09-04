@@ -10,12 +10,31 @@ from .verify import getData, check_github
 # Create your views here.
 @login_required(login_url="/login")
 def index(req):
-    return render(req, "index.html")
+    course_user = []
+    if not req.user.groups.filter(name="teachers"):
+        courses = models.Course.objects.all()
+        for course in courses:
+            if req.user in course.users.all():
+                course_user.append(course)
+    else:
+        course_user = models.Course.objects.all().filter(teacher=req.user)
+    context = {
+        "courses":course_user
+    }
+    return render(req, "index.html", context)
 
 
 @login_required(login_url="/login")
-def course(req, name):
-    pass
+def course(req, id):
+    try:
+        course = models.Course.objects.get(id=id)
+    except:
+        course = None
+    try:
+        modules = models.Module.objects.all()
+    except:
+        modules = None
+    return render(req, "course.html", {"course":course, "modules" : modules})
 
 @not_loggedin
 def loginPage(req):

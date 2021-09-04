@@ -11,14 +11,16 @@
     <div style="text-align: center;">
 
        <h1  style="margin-top: 5rem;">Your Courses</h1>
+  {% for course in courses %}
 <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
+  <img src="/media/{{ course.picture }}" class="card-img-top">
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text"></p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <h5 class="card-title">{{ course.name }}</h5>
+    <p class="card-text">{{ course.description }}</p>
+    <a href="/course/{{ course.id }}" class="btn btn-primary">Continue</a>
   </div>
 </div>
+{% endfor %}
 </div>
     <br>
     <br>
