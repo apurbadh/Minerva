@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from . import forms, models
 from django.contrib.auth.models import User, Group
 from django.contrib import messages
-from .decorators import not_loggedin, is_not_teacher, is_teacher, should_enroll
+from .decorators import not_loggedin, is_not_teacher, is_teacher
 from .verify import getData, check_github
 from django.db.models import Q
 
@@ -25,15 +25,16 @@ def index(req):
     }
     return render(req, "index.html", context)
 
-@should_enroll
 @login_required(login_url="/login")
-def course(req, id):
+def course(req, id):        
     try:
         course = models.Course.objects.get(id=id)
+        if req.user not in course.users.all() and req.user != course.teacher:
+            return redirect("/")
     except:
         course = None
     try:
-        modules = models.Module.objects.all()
+        modules = course.modules.all()
     except:
         modules = None
     return render(req, "course.html", {"course":course, "modules" : modules})
@@ -75,7 +76,7 @@ def logoutUser(req):
     logout(req)
     return redirect('/login')
 
-@login_required
+@login_required(login_url="/login")
 @is_not_teacher
 def verifyPage(req):
     if req.method == "POST":
@@ -84,7 +85,7 @@ def verifyPage(req):
         return redirect("/apply")
     return render(req, "verify.html")
 
-@login_required
+@login_required(login_url="/login")
 @is_not_teacher
 def verifyThePage(req):
     if req.method == "POST":
@@ -100,7 +101,7 @@ def verifyThePage(req):
     return render(req, "apply.html")
 
 
-@login_required
+@login_required(login_url="/login")
 def changeProfile(req):
     if req.method == "POST":
         print("Here")
@@ -119,6 +120,7 @@ def changeProfile(req):
     return render(req, "changepassword.html")
 
 @is_teacher
+@login_required(login_url="/login")
 def createCourse(req):
     if req.method == "POST":
         form = forms.CourseForm(req.POST, req.FILES)
@@ -133,7 +135,7 @@ def createCourse(req):
     }
     return render(req, "create-course.html", context)
 
-@login_required
+@login_required(login_url="/login")
 def search(req):
     try:
         q = req.GET.get('q')
@@ -142,7 +144,7 @@ def search(req):
     results = models.Course.objects.all().filter(Q(name__contains=f"{q}") | Q(description__contains=q))
     return render(req,'search.html',{'results':results})
 
-@login_required
+@login_required(login_url="/login")
 def new(req):
     courses=models.Course.objects.all()
     context = {
@@ -150,10 +152,53 @@ def new(req):
     }
     return render(req, "new.html", context)
 
-@login_required
+@login_required(login_url="/login")
 def enroll(req):
     if req.method == "POST":
         id = int(req.POST["course"])
         course = models.Course.objects.get(id=id)
         course.users.add(req.user)
     return redirect('/')
+
+@login_required(login_url="/login")
+def createmodule(req, id, type):
+    course = models.Course.objects.get(id=id)
+    if type not in ["text", "video", "quiz"] or req.user != course.teacher:
+        return redirect("/")
+    if type == "text":
+        form = forms.CKForm()
+    elif type == "video":
+        form = forms.VideoForm()
+    else:
+        form = forms.QuizForm()
+    context = {
+        "form" : form
+    }
+    if req.method == "POST":
+        if type == "text":
+            form = forms.CKForm(req.POST, req.FILES)
+            t = 1
+        elif type == "video":
+            form = forms.VideoForm(req.POST)
+            t = 2
+        else:
+            form = forms.QuizForm(req.POST)
+            t = 3
+        if form.is_valid():
+            res = form.save(commit=False)
+            res.type_of = t
+            res.save()
+            course.modules.add(res)
+            return redirect('/')
+        
+    return render(req, "createmodule.html", context)
+
+
+@login_required(login_url="/login")
+def module(req, id):
+    try:
+        course = models.Course.objects.get(id=id)
+        modules = course.modules.all()
+    except:
+        return redirect('/')
+    return render(req, "module.html", {"modules":modules})

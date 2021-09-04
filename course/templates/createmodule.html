@@ -2,4 +2,20 @@
 {% block title %} Create Module {% endblock title %}
 {% block body %}
 
+<form  style="text-align: center;margin-top:5rem" method="POST">
+    {% csrf_token %}
+    <h3>Create Module</h3>
+    <br>
+    <br>
+      {{ form.media }}
+        Name : {{ form.name }}<br><br>
+        INFO <br>
+        {{ form.info }}<br><br>
+        {% if form.url_store %}
+        URL : {{ form.url_store }}<br><br>
+        {% elif form.text_store %}
+            {{ form.text_store }}<br><br>
+        {% endif %}
+    <input type="submit"value="Submit" class="btn btn-primary"/>
+</form>
 {% endblock body %}

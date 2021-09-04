@@ -13,6 +13,7 @@
 
 
   {% for course in courses %}
+  {% if request.user not in course.users.all %}
 <div class="card" class="d-flex flex-row" class="align-center" style="width: 18rem;margin:40px">
 <div class="crop" >  <img src="/media/{{ course.picture }}" class="image-size" class="card-img-top"></div>
   <div class="card-body">
@@ -25,6 +26,7 @@
     </form>
   </div>
 </div>
+{% endif %}
 {% endfor %}
 </div>
     <br>

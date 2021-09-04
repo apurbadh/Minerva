@@ -14,5 +14,7 @@ urlpatterns = [
     path("create-course", views.createCourse, name="createCourse"),
     path('search', views.search, name="search"),
     path('new', views.new, name="new"),
-    path("enroll", views.enroll, name="enroll")
+    path("enroll", views.enroll, name="enroll"),
+    path('course/<int:id>/createmodule/<slug:type>', views.createmodule, name="createmodule"),
+    path("course/<int:id>/module/", views.module, name="module")
 ]
