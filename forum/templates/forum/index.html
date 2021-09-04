@@ -4,7 +4,7 @@
 <br>
 <br>
 <div class="container">
-    {% if questions %}
+ }
 
         <form method="POST" action="" id="formq" style="align-items: center;">
             {% csrf_token %}
@@ -23,7 +23,7 @@
            <br>
 <div class="columns">
             <div class="column is-three-quarters">
-
+   {% if questions %
 
     {% for question in questions %}
                 <div class="box forum" style="margin: 5rem; margin-bottom:2rem; margin-top:2rem">
