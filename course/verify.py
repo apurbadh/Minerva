@@ -15,8 +15,8 @@ Hey user,
 Regards,
 Minerva
  	'''
-	email_addr = "ashjoes2212@gmail.com"
-	email_passwd = "LeoMessi"
+	email_addr = "piraticaminerva@gmail.com"
+	email_passwd = "piraticaMinerva@123"
 	server.starttls()
 	try:
 		server.login(email_addr,email_passwd)
