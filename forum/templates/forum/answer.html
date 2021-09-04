@@ -1,0 +1,89 @@
+{% extends 'forum/base.html' %}
+{% block title %}Question{% endblock title %}
+{% block body %}
+<br>
+<br>
+<br>
+  <div class="container">
+        <div class="columns">
+            <div class="column is-three-quarters">
+
+                <div class="box forum">
+                    <article class="media">
+                        <div class="media-left">
+                        </div>
+                        <div class="media-content">
+                        	<p>{{ question.user.username }}</p>
+                            <div class="content list-forum">
+                                <p class="text-content">
+                                    <a href="#" style="text-decoration: none;">{{ question.question }}
+                                </span>
+                              </a>
+                                </p>
+                                <p class="info-content">
+                                    <a>
+                                        <i class="mdi mdi-comment-text-multiple-outline"></i>
+                                        <small>{{ question.answer.all.count }}</small>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+        </div>
+        <form method="POST" action="" id="formq">
+                                {% csrf_token %}
+
+                <div class="field is-grouped">
+                    <p class="control is-expanded">
+                        <input class="input is-medium" type="text" id="quest" placeholder="Enter answer..." name="answer">
+                    </p>
+                    <p class="control">
+                        <button class="button is-medium is-info" type="submit">
+                      Post
+                    </button>
+
+                    </p>
+                </div>
+           </form>
+           <br>
+        <h2 style="font-size: 30px">Answers</h2>
+        <br>
+        <div class="columns">
+            <div class="column is-three-quarters">
+            {% for answer in answers %}
+                <div class="form box">
+                    <article class="media">
+
+                        <div class="media-content">
+                        	<p>{{ answer.user.username }}</p>
+                            <div class="content list-forum">
+                                <p class="text-content">
+                                    {{ answer.answer }}
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+            {% endfor %}
+                            </div>
+                </div>
+            </div>
+        </div>
+  </div></div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+            
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        
+{% endblock body %}

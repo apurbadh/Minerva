@@ -1,6 +1,8 @@
+from os import name
 from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("", views.forum, name="index")
+   path("<int:id>", views.forum, name="question"),
+   path("question/<int:id>", views.answers, name="answer") 
 ]
