@@ -3,7 +3,7 @@
 {% block body %}
 <br>
 <br>
-<div  class="course-card" style="text-align: center;margin-left: 20rem;">
+<div  class="course-card" style="text-align: center;margin-left: 40rem;">
 {%for module in modules%}
 <div class="col-sm-6">
   <div class="card">
@@ -25,6 +25,7 @@
 {% endfor %}
 <form style="text-align: center;" method="POST" action="/certificate">
 <input type="hidden" name="cid" value="{{ course.id }}">
+<input type="submit" value="Get certificate">
 </form>
 </div>
 {% endblock body %}
