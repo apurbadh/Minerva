@@ -7,7 +7,8 @@ from django.contrib import messages
 from .decorators import not_loggedin, is_not_teacher, is_teacher
 from .verify import getData, check_github
 from django.db.models import Q
-
+from .certificate import certificate
+from datetime import datetime
 
 # Create your views here.
 @login_required(login_url="/login")
@@ -201,4 +202,21 @@ def module(req, id):
         modules = course.modules.all()
     except:
         return redirect('/')
-    return render(req, "module.html", {"modules":modules})
+    return render(req, "module.html", {"modules":modules, "course":course})
+
+
+@login_required
+def get_certificate(req):
+    if req.method == "POST":
+        cid = req.POST["cid"]
+        course = models.Course.objects.get(id=cid)
+        teacher = course.teacher.username
+        student = req.user.username
+        now = datetime.now()
+        date = now.strftime("%Y-%m-%d")
+        obj = certificate.ImageMan()
+        path = obj.change_values(student, date,course.name, teacher)
+        return redirect("/media/" + path)
+    return redirect('/')
+        
+        

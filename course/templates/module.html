@@ -12,4 +12,8 @@ src="{{ module.url_store }}">
 </iframe> 
   {% endif %}
 {% endfor %}
+
+<form style="text-align: center;" method="POST" action="/certificate">
+<input type="hidden" name="cid" value="{{ course.id }}">
+</form>
 {% endblock body %}

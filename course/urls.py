@@ -16,5 +16,6 @@ urlpatterns = [
     path('new', views.new, name="new"),
     path("enroll", views.enroll, name="enroll"),
     path('course/<int:id>/createmodule/<slug:type>', views.createmodule, name="createmodule"),
-    path("course/<int:id>/module/", views.module, name="module")
+    path("course/<int:id>/module/", views.module, name="module"),
+    path("certificate", views.get_certificate, name="certificate")
 ]
