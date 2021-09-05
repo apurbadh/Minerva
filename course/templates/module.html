@@ -24,8 +24,9 @@
  
 {% endfor %}
 <form style="text-align: center;" method="POST" action="/certificate">
+	{% csrf_token %}
 <input type="hidden" name="cid" value="{{ course.id }}">
-<input type="submit" value="Get certificate">
+<input type="submit"  class="btn btn-primary" value="Get certificate">
 </form>
 </div>
 {% endblock body %}
