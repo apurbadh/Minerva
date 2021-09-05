@@ -22,9 +22,7 @@ class ImageMan():
         editible_cert.text((905,827),course_name,black,font=self.course_font)
         editible_cert.text((490,1066),course_creator_name,blue,font=self.course_creator_font)
         rand = randint(100,999)
-        self.original_cert.save(f'output/{name}_{rand}.jpg')
-        return f'output/{name}_{rand}.jpg'
+        self.original_cert.save(f'../../media/{name}_{rand}.jpg')
+        return f'../../media/{name}_{rand}.jpg'
 
-newobj = ImageMan()
-path = newobj.change_values("Ashwot","2021-9-4","Intro to Hacking","Adhit Upaydhyay") # name, date, course_name,course_creator
-print(path)
+
