@@ -1,15 +1,28 @@
 {% extends "base.html" %}
 {% block title %}Module{% endblock title %}
 {% block body %}
+<br>
+<br>
+<div  class="course-card" style="text-align: center;margin-left: 20rem;">
 {%for module in modules%}
-  <h1>{{ module.name }}</h1>
-  <p>{{ module.info }}</p>
-  {% if module.type_of == 1 %}
-    {{ module.text_store|safe }}
-    {% elif module.type_of == 2 %}
-     <iframe width="420" height="315"
-src="{{ module.url_store }}">
-</iframe> 
-  {% endif %}
+<div class="col-sm-6">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><u>{{ module.name }}</u></h5>
+      <p class="card-text">{{ module.info }}</p>
+      {% if module.type_of == 1 %}
+      {{ module.text_store|safe }}
+      {% elif module.type_of == 2 %}
+       <iframe width="420" height="315"
+  src="{{ module.url_store }}">
+  </iframe> 
+    {% endif %}
+    </div>
+  </div>
+</div>
+<br>
+ 
 {% endfor %}
+</div>
 {% endblock body %}
+
