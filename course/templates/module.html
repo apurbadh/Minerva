@@ -23,6 +23,9 @@
 <br>
  
 {% endfor %}
+<form style="text-align: center;" method="POST" action="/certificate">
+<input type="hidden" name="cid" value="{{ course.id }}">
+</form>
 </div>
 {% endblock body %}
 
