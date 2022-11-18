@@ -55,7 +55,7 @@ python3 manage.py runserver
  docker-compose up -d
  ```
 ## Status
-Project is : _In Development_
+Project is : _Developed_
 
 
 ## Inspiration
